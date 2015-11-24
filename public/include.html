@@ -1,0 +1,25 @@
+<ul>
+    <li ng-repeat="obj in list" style="border-color: black">
+        <div ng-if="updateA == undefined || updateA == false">
+        {{obj.name}} -- value:{{obj.value}} -- fullValue:{{obj.fullValue}}
+        </div>
+        <div ng-if="updateA == true">
+            Name:<input type="text" ng-model="obj.name">
+            Value:<input type="number" ng-model="obj.value">
+        </div>
+
+        <button data-ng-click="cr = true" ng-show="updateA != true && cr != true ">+</button>
+        <button data-ng-click="updateA = true" ng-show="updateA == undefined || updateA == false">Update</button>
+        <button data-ng-click="updateA = false; update(obj)" ng-show="updateA == true">Save</button>
+
+        <div ng-show="cr == true">
+            Name:<input type="text" ng-model="tmp.name">
+            Value:<input type="number" ng-model="tmp.value">
+        </div>
+        <button data-ng-click="create(obj.id, tmp); cr = false" ng-if="cr">save</button>
+        <button data-ng-click="delete(obj.id)">delete</button>
+        <div ng-if="obj.list.length">
+            <ng-include src="'include.html'" ng-init="list=obj.list; cr=false"></ng-include>
+        </div>
+    </li>
+</ul>

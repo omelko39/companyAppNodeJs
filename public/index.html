@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Tree</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-app="App" ng-controller="Main">
+        <h1>Hello</h1>
+        <button data-ng-click="pl = true">+</button>
+        <div ng-show="pl == true">
+            Name:<input type="text" ng-model="tmp.name">
+            Value:<input type="number" ng-model="tmp.value">
+        </div>
+
+        <button data-ng-click="create(undefined, tmp); pl = false">save</button>
+        <h1>*----------------------------*</h1>
+
+        <ng-include src="'include.html'"></ng-include>
+    </body>
+</html>
+
